@@ -1,0 +1,6 @@
+{
+  "name": "Kopi Ruang — UI/UX Design Case Study",
+  "description": "An editorial UI/UX design case study documenting the visual direction, design system, AI-assisted development, and performance refinement of the Kopi Ruang specialty coffee shop website.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
