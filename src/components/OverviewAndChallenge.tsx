@@ -36,24 +36,30 @@ const CHALLENGE_OBJECTIVES = [
 const AUDIENCE_MAPPINGS = [
   {
     audience: 'STUDENTS & REMOTE WORKERS',
-    need: 'Need a comfortable environment, useful location information, and a sense of the café atmosphere.',
-    supportLabel: 'Website Support',
-    supportContent: 'Hero WiFi highlights, Gallery interior spaces, and Location & opening hours.',
+    assumptionNote: 'Design Assumption · Unvalidated',
+    need: 'Likely prioritize workspace comfort, reliable connectivity, and straightforward directions before choosing a café.',
+    supportLabel: 'Design Response in Website',
+    supportContent:
+      'Hero highlights (WiFi Cepat) answer practicality above the fold, Gallery conveys seating atmosphere, and Location consolidates hours and directions.',
     sections: ['01 Hero', '05 Gallery', '07 Location'],
   },
   {
     audience: 'YOUNG PROFESSIONALS',
-    need: 'Want to discover the café, explore its offerings, and find practical information.',
-    supportLabel: 'Website Support',
-    supportContent: 'About & Why Us narrative, clear single-page navigation, and direct WhatsApp ordering.',
+    assumptionNote: 'Design Assumption · Unvalidated',
+    need: 'Likely scan quickly for brand quality, offerings, and an effortless way to pre-order or coordinate a visit.',
+    supportLabel: 'Design Response in Website',
+    supportContent:
+      'Sticky anchor navigation enables one-click jumping across sections, while the persistent Pesan Online CTA opens a direct WhatsApp ordering flow.',
     sections: ['02 About', '03 Why Us', '08 Final CTA'],
   },
   {
     audience: 'COFFEE ENTHUSIASTS',
-    need: 'Interested in coffee selections, menu offerings, and the specialty coffee experience.',
-    supportLabel: 'Website Support',
-    supportContent: 'Local bean quality storytelling, categorized Menu selections, and brewing imagery.',
-    sections: ['03 Why Us', '04 Menu', '06 Reviews'],
+    assumptionNote: 'Design Assumption · Unvalidated',
+    need: 'Likely look for bean provenance, brewing craft cues, and clear menu categorization with transparent pricing.',
+    supportLabel: 'Design Response in Website',
+    supportContent:
+      'Editorial pour-over photography establishes craft credibility, supported by categorized Menu tabs and illustrative concept social proof in Reviews.',
+    sections: ['03 Why Us', '04 Menu', '06 Reviews (Illustrative)'],
   },
 ];
 
@@ -72,7 +78,10 @@ export function OverviewAndChallenge() {
                 “A coffee shop experience, translated into the digital space.”
               </h2>
               <p className="text-base leading-relaxed text-[#292B28]/85">
-                Kopi Ruang is a fictional specialty coffee shop concept created as a personal project. The goal was to explore how a company profile website could communicate the brand's atmosphere, showcase its offerings, and make essential information accessible through a cohesive digital experience.
+                Kopi Ruang is a self-initiated, fictional specialty coffee shop concept created as a personal portfolio project. Because there is no live brick-and-mortar client, all brand copy, menu pricing, and rating elements (such as the illustrative 4.8★ Google highlight in the UI) serve solely to model a realistic café experience.
+              </p>
+              <p className="text-sm leading-relaxed text-[#292B28]/75">
+                The goal was to practice translating physical hospitality cues into a cohesive single-page website—from visual identity and reusable tokens to AI-assisted front-end implementation and accessibility auditing.
               </p>
             </ScrollReveal>
 
@@ -127,7 +136,7 @@ export function OverviewAndChallenge() {
 
             <ScrollReveal delay={0.1} className="lg:col-span-5">
               <p className="text-base leading-relaxed text-[#F7F3E9]/82">
-                Design a one-page company profile website that captures the warmth and quality of a specialty coffee café while making information easy to explore and encouraging visitors to take action.
+                Design a one-page company profile website that captures the warmth and quality of a specialty coffee café while structuring navigation, menu discovery, location details, and WhatsApp ordering into a friction-free flow.
               </p>
             </ScrollReveal>
           </div>
@@ -163,14 +172,14 @@ export function OverviewAndChallenge() {
           <ScrollReveal className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-4 max-w-2xl">
               <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#B99A5D]">
-                03 · Goals &amp; Users
+                03 · Design Assumptions &amp; Intended Visitor Journey
               </p>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.12] text-[#183F35]">
                 “One experience. Three audiences.”
               </h2>
             </div>
-            <p className="text-sm text-[#292B28]/75 max-w-md leading-relaxed">
-              Concept design considerations used to align site content with visitor expectations—framed as design assumptions rather than interview-validated personas.
+            <p className="text-sm text-[#292B28]/78 max-w-md leading-relaxed">
+              Because this is a self-initiated concept project, these audience profiles are <strong className="font-medium text-[#183F35]">design assumptions</strong>—not research-validated personas—used to hypothesize how navigation, menu, location, and WhatsApp CTAs serve different visitor intents.
             </p>
           </ScrollReveal>
 
@@ -181,9 +190,14 @@ export function OverviewAndChallenge() {
                 className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center p-6 sm:p-8 rounded-xl bg-[#E8DFD0]/55 border border-[#183F35]/12"
               >
                 <div className="lg:col-span-5 space-y-2">
-                  <p className="text-xs font-semibold tracking-[0.16em] uppercase text-[#183F35]">
-                    {row.audience}
-                  </p>
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <p className="text-xs font-semibold tracking-[0.16em] uppercase text-[#183F35]">
+                      {row.audience}
+                    </p>
+                    <span className="font-mono text-[11px] text-[#292B28]/65">
+                      {row.assumptionNote}
+                    </span>
+                  </div>
                   <p className="text-sm sm:text-[15px] leading-relaxed text-[#292B28]/85">
                     {row.need}
                   </p>
@@ -194,7 +208,7 @@ export function OverviewAndChallenge() {
                     <span className="hidden lg:block w-12 h-px bg-[#B99A5D]/60" aria-hidden="true" />
                     <ArrowRight className="w-5 h-5" aria-hidden="true" />
                     <span className="lg:hidden text-xs uppercase tracking-[0.14em] font-medium">
-                      Supported by
+                      Design Response
                     </span>
                   </div>
                 </div>

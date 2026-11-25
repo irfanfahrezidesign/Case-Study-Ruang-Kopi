@@ -11,6 +11,19 @@ export const PROJECT_LINKS = {
   designerEmail: 'irfanfahrezi.design@gmail.com',
 };
 
+export const PROJECT_SNAPSHOT = [
+  { label: 'Project Type', value: 'Self-Initiated Fictional Concept Project' },
+  { label: 'Role', value: 'Solo UI/UX Designer & Front-End Prototyper' },
+  {
+    label: 'Scope',
+    value: 'Visual Direction, Design System, Responsive One-Page UI, AI-Assisted Build & Audit',
+  },
+  {
+    label: 'Tools',
+    value: 'Figma, Canva, Google AI Studio (Gemini), GitHub, Vercel',
+  },
+] as const;
+
 export const UPLOADED_SCREENSHOTS = {
   mobileHero: '/assets/aistudio/Screenshot_20261125-092758_Chrome__1__cf52c50f.jpg',
   desktopHeroAndAbout: '/assets/aistudio/Screenshot_20261125-092815_Chrome__1__5684379c.jpg',
@@ -80,8 +93,23 @@ export const PAGE_STRUCTURE_STEPS = [
   { num: '03', name: 'WHY US', detail: 'Core differentiators: fast WiFi, local beans & calm workspace ambiance', tone: 'dark' as const },
   { num: '04', name: 'MENU', detail: 'Categorized specialty coffee, non-coffee & light bite selections with pricing', tone: 'light' as const },
   { num: '05', name: 'GALLERY', detail: 'Curated interior & beverage photography with interactive lightbox', tone: 'dark' as const },
-  { num: '06', name: 'REVIEWS', detail: 'Guest impressions highlighting atmosphere and drink consistency', tone: 'light' as const },
+  { num: '06', name: 'REVIEWS', detail: 'Illustrative guest review cards demonstrating social proof layout (fictional concept copy)', tone: 'light' as const },
   { num: '07', name: 'LOCATION', detail: 'Address details, opening hours, map access & contact information', tone: 'dark' as const },
   { num: '08', name: 'FINAL CTA', detail: 'Direct invitation to visit the space or place a WhatsApp order', tone: 'light' as const },
   { num: '09', name: 'FOOTER', detail: 'Brand mark, quick section links, social handles & closing details', tone: 'dark' as const },
 ];
+
+export const PAGESPEED_BENCHMARKS = {
+  mobile: [
+    { label: 'Performance', score: 92 },
+    { label: 'Accessibility', score: 100 },
+    { label: 'Best Practices', score: 100 },
+    { label: 'SEO', score: 100 },
+  ],
+  desktop: [
+    { label: 'Performance', score: 100 },
+    { label: 'Accessibility', score: 100 },
+    { label: 'Best Practices', score: 100 },
+    { label: 'SEO', score: 100 },
+  ],
+} as const;

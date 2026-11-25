@@ -250,12 +250,12 @@ export function VisualAndSystem() {
                     : 'Secondary hairline outline guides visitors smoothly to the café location section.'}
                 </p>
 
-                <div className="pt-3 border-t border-[#F7F3E9]/15 flex flex-wrap gap-x-6 gap-y-2 text-xs text-[#F7F3E9]/80">
+                <div className="pt-3 border-t border-[#F7F3E9]/15 flex flex-wrap gap-x-4 gap-y-2 text-xs text-[#F7F3E9]/80">
                   <span>WiFi Cepat</span>
                   <span>·</span>
                   <span>Biji Kopi Lokal</span>
                   <span>·</span>
-                  <span>4.8★ Google</span>
+                  <span>4.8★ Google (Illustrative UI)</span>
                 </div>
               </div>
 

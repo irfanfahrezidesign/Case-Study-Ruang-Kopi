@@ -1,6 +1,11 @@
 import React from 'react';
 import { ArrowUp, ArrowUpRight, CheckCircle2, Maximize2 } from 'lucide-react';
-import { LightboxImage, PROJECT_LINKS, UPLOADED_SCREENSHOTS } from '../data/caseStudyData';
+import {
+  LightboxImage,
+  PAGESPEED_BENCHMARKS,
+  PROJECT_LINKS,
+  UPLOADED_SCREENSHOTS,
+} from '../data/caseStudyData';
 import { ScrollReveal, StaggerGroup, StaggerItem } from './MotionPrimitives';
 
 interface ProcessAndResultsProps {
@@ -39,18 +44,29 @@ const ISSUES_FIXED = [
   'Gallery tile spacing and image strip refinements',
 ];
 
-const MOBILE_SCORES = [
-  { label: 'Performance', score: 93 },
-  { label: 'Accessibility', score: 90 },
-  { label: 'Best Practices', score: 100 },
-  { label: 'SEO', score: 100 },
-];
-
 const ACCESSIBILITY_IMPROVEMENTS = [
   'Improved menu price contrast from 4.35:1 to 5.38:1',
   'Fixed contact list markup for screen readers',
   'Improved keyboard accessibility for tabs, lightbox, and order dialog',
   'Converted website images to WebP to reduce image weight',
+];
+
+const LIMITATIONS_AND_VALIDATION = [
+  {
+    num: '01',
+    title: 'CONCEPT-ONLY BRAND DATA',
+    text: 'Kopi Ruang is a fictional café concept; menu items, pricing, and illustrative social proof (such as the 4.8★ Google badge and sample reviews) demonstrate layout hierarchy rather than real business metrics.',
+  },
+  {
+    num: '02',
+    title: 'UNVALIDATED USER ASSUMPTIONS',
+    text: 'Visitor needs and content priorities were derived from domain assumptions rather than interviews, usability testing, or live analytics.',
+  },
+  {
+    num: '03',
+    title: 'NEXT VALIDATION STEPS',
+    text: 'Conduct task-based usability testing on Menu category filtering and the WhatsApp ordering dialog, check mobile readability in bright outdoor light, and validate conversion behavior with a real café partner.',
+  },
 ];
 
 const REFLECTION_POINTS = [
@@ -178,7 +194,7 @@ export function ProcessAndResults({ onOpenLightbox }: ProcessAndResultsProps) {
                     ISSUES FOUND &amp; FIXED
                   </h3>
                   <p className="text-sm leading-relaxed text-[#F7F3E9]/75">
-                    Real visual and functional defects caught during screenshot reviews and resolved through focused follow-up prompts.
+                    Visual and functional defects caught during screenshot reviews and resolved through focused follow-up prompts.
                   </p>
                 </div>
 
@@ -222,17 +238,19 @@ export function ProcessAndResults({ onOpenLightbox }: ProcessAndResultsProps) {
 
           {/* Score Visualization & Real Uploaded PageSpeed Screenshots */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            {/* Left: Reported Scores + Actual Improvements */}
+            {/* Left: Verified Scores Matching Screenshots + Actual Improvements */}
             <ScrollReveal className="lg:col-span-7 space-y-8">
               <div className="space-y-4">
                 <div className="flex items-baseline justify-between border-b border-[#183F35]/12 pb-2.5">
                   <h3 className="font-sans text-xs font-semibold tracking-[0.16em] uppercase text-[#183F35]">
                     Mobile PageSpeed Scores
                   </h3>
-                  <span className="font-mono text-xs text-[#292B28]/65">Google PageSpeed Insights</span>
+                  <span className="font-mono text-xs text-[#292B28]/65">
+                    Google PageSpeed Insights
+                  </span>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
-                  {MOBILE_SCORES.map((item) => (
+                  {PAGESPEED_BENCHMARKS.mobile.map((item) => (
                     <ScoreGauge key={item.label} label={item.label} score={item.score} />
                   ))}
                 </div>
@@ -241,22 +259,23 @@ export function ProcessAndResults({ onOpenLightbox }: ProcessAndResultsProps) {
               <div className="space-y-4">
                 <div className="flex items-baseline justify-between border-b border-[#183F35]/12 pb-2.5">
                   <h3 className="font-sans text-xs font-semibold tracking-[0.16em] uppercase text-[#183F35]">
-                    Desktop PageSpeed Score
+                    Desktop PageSpeed Scores
                   </h3>
-                  <span className="font-mono text-xs text-[#292B28]/65">Desktop Benchmark</span>
+                  <span className="font-mono text-xs text-[#292B28]/65">
+                    Google PageSpeed Insights
+                  </span>
                 </div>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-6 p-5 rounded-xl border border-[#183F35]/12 bg-white/50">
-                  <ScoreGauge label="Performance" score={100} />
-                  <p className="text-sm text-[#292B28]/85 leading-relaxed">
-                    Desktop evaluation achieved a 100 Performance score, paired with accessibility and image-weight optimizations implemented across the responsive breakpoints.
-                  </p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+                  {PAGESPEED_BENCHMARKS.desktop.map((item) => (
+                    <ScoreGauge key={item.label} label={item.label} score={item.score} />
+                  ))}
                 </div>
               </div>
 
               {/* Improvements Actually Performed */}
               <div className="p-6 sm:p-7 rounded-xl bg-[#E8DFD0]/55 border border-[#183F35]/12 space-y-4">
                 <h3 className="font-sans text-xs font-semibold tracking-[0.16em] uppercase text-[#183F35]">
-                  Refinements Actually Performed
+                  Refinements Performed Before Final Audit
                 </h3>
                 <ul className="space-y-2.5">
                   {ACCESSIBILITY_IMPROVEMENTS.map((item) => (
@@ -285,7 +304,7 @@ export function ProcessAndResults({ onOpenLightbox }: ProcessAndResultsProps) {
                     onOpenLightbox({
                       src: UPLOADED_SCREENSHOTS.pagespeedMobile,
                       alt: 'Google PageSpeed Insights Mobile audit screenshot showing 92 Performance and 100 Accessibility, Best Practices, and SEO',
-                      caption: 'PageSpeed Insights — Mobile Verification Capture',
+                      caption: 'PageSpeed Insights — Mobile Capture (92 / 100 / 100 / 100)',
                       sourceLabel: 'Uploaded Audit Screenshot',
                     })
                   }
@@ -294,13 +313,13 @@ export function ProcessAndResults({ onOpenLightbox }: ProcessAndResultsProps) {
                   <div className="relative aspect-[9/16] overflow-hidden rounded-lg bg-[#F7F3E9]">
                     <img
                       src={UPLOADED_SCREENSHOTS.pagespeedMobile}
-                      alt="PageSpeed Insights Mobile screenshot"
+                      alt="PageSpeed Insights Mobile screenshot showing 92 Performance, 100 Accessibility, 100 Best Practices, 100 SEO"
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.02]"
                     />
                   </div>
                   <div className="pt-2.5 flex items-center justify-between text-xs text-[#183F35]">
-                    <span className="font-medium">Mobile Capture</span>
+                    <span className="font-medium">Mobile (92 / 100)</span>
                     <Maximize2 className="w-3.5 h-3.5 text-[#B99A5D]" />
                   </div>
                 </button>
@@ -311,7 +330,7 @@ export function ProcessAndResults({ onOpenLightbox }: ProcessAndResultsProps) {
                     onOpenLightbox({
                       src: UPLOADED_SCREENSHOTS.pagespeedDesktop,
                       alt: 'Google PageSpeed Insights Desktop audit screenshot showing 100 across Performance, Accessibility, Best Practices, and SEO',
-                      caption: 'PageSpeed Insights — Desktop Verification Capture',
+                      caption: 'PageSpeed Insights — Desktop Capture (100 / 100 / 100 / 100)',
                       sourceLabel: 'Uploaded Audit Screenshot',
                     })
                   }
@@ -320,23 +339,59 @@ export function ProcessAndResults({ onOpenLightbox }: ProcessAndResultsProps) {
                   <div className="relative aspect-[9/16] overflow-hidden rounded-lg bg-[#F7F3E9]">
                     <img
                       src={UPLOADED_SCREENSHOTS.pagespeedDesktop}
-                      alt="PageSpeed Insights Desktop screenshot"
+                      alt="PageSpeed Insights Desktop screenshot showing 100 across Performance, Accessibility, Best Practices, and SEO"
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.02]"
                     />
                   </div>
                   <div className="pt-2.5 flex items-center justify-between text-xs text-[#183F35]">
-                    <span className="font-medium">Desktop Capture</span>
+                    <span className="font-medium">Desktop (100 / 100)</span>
                     <Maximize2 className="w-3.5 h-3.5 text-[#B99A5D]" />
                   </div>
                 </button>
               </div>
 
-              <p className="text-xs text-[#292B28]/70 leading-relaxed">
-                Uploaded PageSpeed Insights screenshots captured after refinement (showing Mobile 92/100/100/100 and Desktop 100/100/100/100).
+              <p className="text-xs text-[#292B28]/75 leading-relaxed">
+                Values match the captured synthetic PageSpeed Insights lab benchmarks directly (Mobile: 92 Performance, 100 Accessibility, 100 Best Practices, 100 SEO; Desktop: 100 across all four categories). Real-world field user telemetry was not collected.
               </p>
             </ScrollReveal>
           </div>
+
+          {/* LIMITATIONS & FUTURE VALIDATION */}
+          <ScrollReveal className="pt-8 border-t border-[#183F35]/12 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+              <div className="space-y-1">
+                <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#B99A5D]">
+                  Scope Boundaries
+                </p>
+                <h3 className="font-serif text-2xl sm:text-3xl text-[#183F35]">
+                  Limitations &amp; Future Validation
+                </h3>
+              </div>
+              <p className="text-xs text-[#292B28]/70 max-w-md">
+                Transparent distinction between concept execution and empirical research.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {LIMITATIONS_AND_VALIDATION.map((item) => (
+                <div
+                  key={item.num}
+                  className="p-6 rounded-xl border border-[#183F35]/15 bg-[#E8DFD0]/35 space-y-2.5"
+                >
+                  <span className="font-mono text-xs text-[#B99A5D] tabular-nums block">
+                    {item.num}
+                  </span>
+                  <h4 className="font-sans text-xs font-semibold tracking-[0.14em] uppercase text-[#183F35]">
+                    {item.title}
+                  </h4>
+                  <p className="text-sm text-[#292B28]/85 leading-relaxed">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -405,7 +460,7 @@ export function ProcessAndResults({ onOpenLightbox }: ProcessAndResultsProps) {
               className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md border border-[#F7F3E9]/30 text-[#F7F3E9] text-sm font-medium tracking-wide hover:bg-[#F7F3E9]/10 transition-colors whitespace-nowrap"
             >
               <ArrowUp className="w-4 h-4 transition-transform duration-150 group-hover:-translate-y-0.5" />
-              <span>Back to Portfolio</span>
+              <span>Back to Top</span>
             </button>
           </ScrollReveal>
         </div>
@@ -418,7 +473,7 @@ export function ProcessAndResults({ onOpenLightbox }: ProcessAndResultsProps) {
               <span aria-hidden="true">·</span>
               <span>UI/UX Designer</span>
               <span aria-hidden="true">·</span>
-              <span>Kopi Ruang Case Study</span>
+              <span>Kopi Ruang Concept Case Study</span>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-5">

@@ -95,19 +95,35 @@ export function HeroSection({ onOpenLightbox }: HeroSectionProps) {
               </button>
             </div>
 
-            {/* Project Info & Tools — Clean unboxed metadata */}
-            <div className="pt-6 border-t border-[#183F35]/12 grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
-              <div className="space-y-1.5">
+            {/* Project Snapshot — Clean unboxed metadata */}
+            <div className="pt-6 border-t border-[#183F35]/12 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+              <div className="space-y-1">
                 <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-[#B99A5D]">
-                  Project Scope
+                  Project Type
                 </p>
                 <p className="text-[#292B28]/85 leading-relaxed">
-                  Personal Concept Project · UI/UX Design · Design System · AI-Assisted Development · Responsive Web Design
+                  Self-Initiated Fictional Concept Project
                 </p>
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-[#B99A5D]">
-                  Tools Used
+                  Role
+                </p>
+                <p className="text-[#292B28]/85 leading-relaxed">
+                  Solo UI/UX Designer &amp; Front-End Prototyper
+                </p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-[#B99A5D]">
+                  Scope
+                </p>
+                <p className="text-[#292B28]/85 leading-relaxed">
+                  Visual Direction · Design System · Responsive UI · AI-Assisted Build &amp; Audit
+                </p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-[#B99A5D]">
+                  Tools
                 </p>
                 <p className="text-[#292B28]/85 leading-relaxed">
                   Figma · Canva · Google AI Studio (Gemini) · GitHub · Vercel
