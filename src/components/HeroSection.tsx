@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowDown, ArrowUpRight, Maximize2 } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
-import { LightboxImage, PROJECT_LINKS, UPLOADED_SCREENSHOTS } from '../data/caseStudyData';
+import { LightboxImage, PROJECT_LINKS, WEBSITE_SHOWCASE_MEDIA } from '../data/caseStudyData';
 
 interface HeroSectionProps {
   onOpenLightbox: (image: LightboxImage) => void;
@@ -15,7 +15,7 @@ export function HeroSection({ onOpenLightbox }: HeroSectionProps) {
   const handleExploreClick = () => {
     const el = document.getElementById('overview');
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' });
     }
   };
 
@@ -57,7 +57,7 @@ export function HeroSection({ onOpenLightbox }: HeroSectionProps) {
           >
             <div className="space-y-4">
               <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#183F35]">
-                Project 02 <span className="mx-2 text-[#B99A5D]" aria-hidden="true">·</span> UI/UX Case Study
+                UI/UX Case Study
               </p>
 
               <h1 className="font-serif text-5xl sm:text-6xl lg:text-[4.25rem] leading-[0.98] tracking-tight text-[#183F35]">
@@ -98,35 +98,35 @@ export function HeroSection({ onOpenLightbox }: HeroSectionProps) {
             {/* Project Snapshot — Clean unboxed metadata */}
             <div className="pt-6 border-t border-[#183F35]/12 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
               <div className="space-y-1">
-                <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-[#B99A5D]">
+                <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-[#6B5230]">
                   Project Type
                 </p>
-                <p className="text-[#292B28]/85 leading-relaxed">
-                  Self-Initiated Fictional Concept Project
+                <p className="text-[#292B28]/90 leading-relaxed">
+                  Fictional Concept Project (Protolabs Brief)
                 </p>
               </div>
               <div className="space-y-1">
-                <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-[#B99A5D]">
+                <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-[#6B5230]">
                   Role
                 </p>
-                <p className="text-[#292B28]/85 leading-relaxed">
-                  Solo UI/UX Designer &amp; Front-End Prototyper
+                <p className="text-[#292B28]/90 leading-relaxed">
+                  UI/UX Direction · Design System · Copywriting · Photo Curation · QA
                 </p>
               </div>
               <div className="space-y-1">
-                <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-[#B99A5D]">
-                  Scope
+                <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-[#6B5230]">
+                  Platform &amp; Stack
                 </p>
-                <p className="text-[#292B28]/85 leading-relaxed">
-                  Visual Direction · Design System · Responsive UI · AI-Assisted Build &amp; Audit
+                <p className="text-[#292B28]/90 leading-relaxed">
+                  Responsive Web (Desktop &amp; Mobile) · HTML, Tailwind CSS v4, Vite
                 </p>
               </div>
               <div className="space-y-1">
-                <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-[#B99A5D]">
+                <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-[#6B5230]">
                   Tools
                 </p>
-                <p className="text-[#292B28]/85 leading-relaxed">
-                  Figma · Canva · Google AI Studio (Gemini) · GitHub · Vercel
+                <p className="text-[#292B28]/90 leading-relaxed">
+                  Figma · Google AI Studio · GitHub · Vercel
                 </p>
               </div>
             </div>
@@ -148,23 +148,23 @@ export function HeroSection({ onOpenLightbox }: HeroSectionProps) {
                   <span className="w-2.5 h-2.5 rounded-full bg-[#F7F3E9]/25" />
                   <span className="w-2.5 h-2.5 rounded-full bg-[#F7F3E9]/25" />
                 </div>
-                <span className="text-[11px] font-mono text-[#F7F3E9]/65 truncate">
+                <span className="text-[11px] font-mono text-[#F7F3E9]/75 truncate">
                   kopi-ruang-website.vercel.app
                 </span>
                 <button
                   type="button"
                   onClick={() =>
                     onOpenLightbox({
-                      src: UPLOADED_SCREENSHOTS.desktopHeroAndAbout,
-                      alt: 'Real desktop screenshot of the Kopi Ruang company profile website',
-                      caption: 'Kopi Ruang — Desktop View (Real Website Capture)',
-                      sourceLabel: 'Uploaded Project Screenshot',
+                      src: WEBSITE_SHOWCASE_MEDIA.hero.desktop,
+                      alt: WEBSITE_SHOWCASE_MEDIA.hero.desktopAlt,
+                      caption: 'Kopi Ruang — Desktop Hero (Genuine Website Capture)',
+                      sourceLabel: 'Uploaded Desktop Screenshot',
                     })
                   }
                   aria-label="Inspect full desktop website screenshot"
-                  className="inline-flex items-center gap-1 text-[11px] text-[#B99A5D] hover:text-[#F7F3E9] transition-colors"
+                  className="inline-flex items-center gap-1 text-[11px] text-[#B99A5D] hover:text-[#F7F3E9] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B99A5D]"
                 >
-                  <Maximize2 className="w-3.5 h-3.5" />
+                  <Maximize2 className="w-3.5 h-3.5" aria-hidden="true" />
                   <span className="hidden sm:inline">Inspect</span>
                 </button>
               </div>
@@ -174,55 +174,66 @@ export function HeroSection({ onOpenLightbox }: HeroSectionProps) {
                 type="button"
                 onClick={() =>
                   onOpenLightbox({
-                    src: UPLOADED_SCREENSHOTS.desktopHeroAndAbout,
-                    alt: 'Real desktop screenshot of the Kopi Ruang company profile website',
-                    caption: 'Kopi Ruang — Desktop View (Real Website Capture)',
-                    sourceLabel: 'Uploaded Project Screenshot',
+                    src: WEBSITE_SHOWCASE_MEDIA.hero.desktop,
+                    alt: WEBSITE_SHOWCASE_MEDIA.hero.desktopAlt,
+                    caption: 'Kopi Ruang — Desktop Hero (Genuine Website Capture)',
+                    sourceLabel: 'Uploaded Desktop Screenshot',
                   })
                 }
-                className="group relative block w-full aspect-[16/11] overflow-hidden rounded-lg bg-[#183F35] text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B99A5D]"
+                className="group relative block w-full overflow-hidden rounded-lg bg-[#183F35] text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B99A5D]"
               >
                 <img
-                  src={UPLOADED_SCREENSHOTS.desktopHeroAndAbout}
-                  alt="Kopi Ruang desktop website showing navigation, headline Ruang untuk Fokus Ruang untuk Bercerita, and arched pour-over coffee photography"
+                  src={WEBSITE_SHOWCASE_MEDIA.hero.desktop}
+                  alt={WEBSITE_SHOWCASE_MEDIA.hero.desktopAlt}
+                  width={WEBSITE_SHOWCASE_MEDIA.hero.desktopWidth}
+                  height={WEBSITE_SHOWCASE_MEDIA.hero.desktopHeight}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover object-[50%_12%] transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                  className="w-full h-auto block transition-transform duration-500 ease-out group-hover:scale-[1.015]"
                 />
                 <span className="sr-only">Open full desktop screenshot</span>
               </button>
             </div>
 
             {/* Overlapping Mobile Mockup */}
-            <motion.div
-              initial={prefersReduced ? false : { opacity: 0, y: 26 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.26, ease: EASE_EDITORIAL }}
-              className="relative sm:absolute sm:right-4 sm:bottom-0 mt-5 sm:mt-0 w-[190px] sm:w-[215px] mx-auto sm:mx-0 rounded-[24px] border-[3px] border-[#292B28] bg-[#183F35] p-1.5 shadow-2xl shadow-[#183F35]/25"
-            >
-              <button
-                type="button"
-                onClick={() =>
-                  onOpenLightbox({
-                    src: UPLOADED_SCREENSHOTS.mobileHero,
-                    alt: 'Real mobile screenshot of the Kopi Ruang company profile website',
-                    caption: 'Kopi Ruang — Mobile View (Real Website Capture)',
-                    sourceLabel: 'Uploaded Project Screenshot',
-                  })
-                }
-                className="group relative block w-full aspect-[9/17] overflow-hidden rounded-[18px] bg-[#183F35] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B99A5D]"
+            {WEBSITE_SHOWCASE_MEDIA.hero.mobile && (
+              <motion.div
+                initial={prefersReduced ? false : { opacity: 0, y: 26 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.26, ease: EASE_EDITORIAL }}
+                className="relative sm:absolute sm:right-4 sm:bottom-0 mt-5 sm:mt-0 w-[190px] sm:w-[215px] mx-auto sm:mx-0 rounded-[24px] border-[3px] border-[#292B28] bg-[#183F35] p-1.5 shadow-2xl shadow-[#183F35]/25"
               >
-                <img
-                  src={UPLOADED_SCREENSHOTS.mobileHero}
-                  alt="Kopi Ruang mobile website showing responsive header, hero headline, Pesan Online button, and facility highlights"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover object-[50%_22%] transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                />
-                <span className="sr-only">Open full mobile screenshot</span>
-              </button>
-            </motion.div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    onOpenLightbox({
+                      src: WEBSITE_SHOWCASE_MEDIA.hero.mobile!,
+                      alt: WEBSITE_SHOWCASE_MEDIA.hero.mobileAlt || 'Kopi Ruang mobile website screenshot',
+                      caption: 'Kopi Ruang — Mobile View (Genuine Website Capture)',
+                      sourceLabel: 'Uploaded Mobile Screenshot',
+                    })
+                  }
+                  className="group relative block w-full aspect-[9/17] overflow-hidden rounded-[18px] bg-[#183F35] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B99A5D]"
+                >
+                  <img
+                    src={WEBSITE_SHOWCASE_MEDIA.hero.mobile}
+                    alt={WEBSITE_SHOWCASE_MEDIA.hero.mobileAlt}
+                    width={WEBSITE_SHOWCASE_MEDIA.hero.mobileWidth}
+                    height={WEBSITE_SHOWCASE_MEDIA.hero.mobileHeight}
+                    loading="eager"
+                    decoding="async"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover object-[50%_22%] transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  />
+                  <span className="sr-only">Open full mobile screenshot</span>
+                </button>
+              </motion.div>
+            )}
 
-            <p className="mt-4 sm:mt-3 text-xs text-[#292B28]/65">
-              Captured directly from the live deployment · Click either frame to inspect full screen
+            <p className="mt-4 sm:mt-3 text-xs text-[#292B28]/80">
+              Captured directly from the live deployment · Tap or click either frame to zoom
             </p>
           </motion.div>
         </div>

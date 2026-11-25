@@ -17,7 +17,7 @@ const CHALLENGE_OBJECTIVES = [
     num: '01',
     title: 'CREATE AN ATMOSPHERE',
     description:
-      "Communicate the café's character and welcoming environment through visual design and photography.",
+      "Communicate the café's character and welcoming environment through visual design and AI-curated photography.",
   },
   {
     num: '02',
@@ -58,7 +58,7 @@ const AUDIENCE_MAPPINGS = [
     need: 'Likely look for bean provenance, brewing craft cues, and clear menu categorization with transparent pricing.',
     supportLabel: 'Design Response in Website',
     supportContent:
-      'Editorial pour-over photography establishes craft credibility, supported by categorized Menu tabs and illustrative concept social proof in Reviews.',
+      'Editorial pour-over photography establishes craft credibility, supported by categorized Menu tabs across 12 items and illustrative concept social proof in Reviews.',
     sections: ['03 Why Us', '04 Menu', '06 Reviews (Illustrative)'],
   },
 ];
@@ -71,17 +71,17 @@ export function OverviewAndChallenge() {
         <div className="max-w-[1280px] mx-auto px-5 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <ScrollReveal className="lg:col-span-5 space-y-6">
-              <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#B99A5D]">
+              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#6B5230]">
                 01 · The Project
               </p>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.12] text-[#183F35]">
                 “A coffee shop experience, translated into the digital space.”
               </h2>
-              <p className="text-base leading-relaxed text-[#292B28]/85">
-                Kopi Ruang is a self-initiated, fictional specialty coffee shop concept created as a personal portfolio project. Because there is no live brick-and-mortar client, all brand copy, menu pricing, and rating elements (such as the illustrative 4.8★ Google highlight in the UI) serve solely to model a realistic café experience.
+              <p className="text-base leading-relaxed text-[#292B28]/88">
+                Kopi Ruang is a fictional specialty coffee shop concept built from a Protolabs brief. Because there is no real-world client, all business data—including menu prices, street address, contact details, customer counts, ratings, and testimonials—is entirely fictional and created solely to simulate a realistic café profile.
               </p>
-              <p className="text-sm leading-relaxed text-[#292B28]/75">
-                The goal was to practice translating physical hospitality cues into a cohesive single-page website—from visual identity and reusable tokens to AI-assisted front-end implementation and accessibility auditing.
+              <p className="text-sm leading-relaxed text-[#292B28]/80">
+                The imagery across both the website and this case study was generated with AI and curated to match the brand’s visual tone, while the front-end code was built with assistance from Google AI Studio.
               </p>
             </ScrollReveal>
 
@@ -91,7 +91,11 @@ export function OverviewAndChallenge() {
                   <SubtleParallax offset={14}>
                     <img
                       src={EDITORIAL_IMAGES.overviewCraft}
-                      alt="Specialty Indonesian coffee pour-over carafe and ceramic cups on natural travertine and linen"
+                      alt="AI-generated editorial photography of specialty Indonesian coffee pour-over carafe and ceramic cups on travertine and linen"
+                      width={1376}
+                      height={768}
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
                       className="w-full aspect-[16/9] object-cover scale-[1.04]"
                     />
@@ -106,7 +110,7 @@ export function OverviewAndChallenge() {
                 <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 border-t border-[#183F35]/12 pt-5">
                   {PROJECT_OBJECTIVES.map((objective, idx) => (
                     <StaggerItem key={objective} className="flex items-baseline gap-3 py-1">
-                      <span className="font-mono text-xs text-[#B99A5D] tabular-nums shrink-0">
+                      <span className="font-mono text-xs font-medium text-[#6B5230] tabular-nums shrink-0">
                         0{idx + 1}
                       </span>
                       <span className="text-sm sm:text-[15px] text-[#292B28]/90 leading-snug">
@@ -171,15 +175,15 @@ export function OverviewAndChallenge() {
         <div className="max-w-[1280px] mx-auto px-5 sm:px-8 space-y-12">
           <ScrollReveal className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-4 max-w-2xl">
-              <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#B99A5D]">
+              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#6B5230]">
                 03 · Design Assumptions &amp; Intended Visitor Journey
               </p>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.12] text-[#183F35]">
                 “One experience. Three audiences.”
               </h2>
             </div>
-            <p className="text-sm text-[#292B28]/78 max-w-md leading-relaxed">
-              Because this is a self-initiated concept project, these audience profiles are <strong className="font-medium text-[#183F35]">design assumptions</strong>—not research-validated personas—used to hypothesize how navigation, menu, location, and WhatsApp CTAs serve different visitor intents.
+            <p className="text-sm text-[#292B28]/80 max-w-md leading-relaxed">
+              Because this is a concept project, these audience profiles are <strong className="font-medium text-[#183F35]">design assumptions</strong>—not research-validated personas—used to hypothesize how navigation, menu, location, and WhatsApp CTAs serve different visitor intents.
             </p>
           </ScrollReveal>
 
@@ -194,18 +198,18 @@ export function OverviewAndChallenge() {
                     <p className="text-xs font-semibold tracking-[0.16em] uppercase text-[#183F35]">
                       {row.audience}
                     </p>
-                    <span className="font-mono text-[11px] text-[#292B28]/65">
+                    <span className="font-mono text-[11px] text-[#292B28]/80">
                       {row.assumptionNote}
                     </span>
                   </div>
-                  <p className="text-sm sm:text-[15px] leading-relaxed text-[#292B28]/85">
+                  <p className="text-sm sm:text-[15px] leading-relaxed text-[#292B28]/88">
                     {row.need}
                   </p>
                 </div>
 
                 <div className="lg:col-span-2 flex items-center justify-start lg:justify-center">
-                  <div className="inline-flex items-center gap-2 text-[#B99A5D]">
-                    <span className="hidden lg:block w-12 h-px bg-[#B99A5D]/60" aria-hidden="true" />
+                  <div className="inline-flex items-center gap-2 text-[#6B5230]">
+                    <span className="hidden lg:block w-12 h-px bg-[#6B5230]/50" aria-hidden="true" />
                     <ArrowRight className="w-5 h-5" aria-hidden="true" />
                     <span className="lg:hidden text-xs uppercase tracking-[0.14em] font-medium">
                       Design Response
@@ -214,13 +218,13 @@ export function OverviewAndChallenge() {
                 </div>
 
                 <div className="lg:col-span-5 space-y-2.5 lg:pl-4 lg:border-l lg:border-[#183F35]/12">
-                  <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-[#B99A5D]">
+                  <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-[#6B5230]">
                     {row.supportLabel}
                   </p>
                   <p className="text-sm sm:text-[15px] leading-relaxed text-[#183F35] font-medium">
                     {row.supportContent}
                   </p>
-                  <p className="text-xs text-[#292B28]/70 font-mono">
+                  <p className="text-xs text-[#292B28]/80 font-mono">
                     {row.sections.join(' · ')}
                   </p>
                 </div>

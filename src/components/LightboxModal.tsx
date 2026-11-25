@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 import { LightboxImage } from '../data/caseStudyData';
 
@@ -8,12 +8,24 @@ interface LightboxModalProps {
 }
 
 export function LightboxModal({ image, onClose }: LightboxModalProps) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
   useEffect(() => {
     if (!image) return;
+
+    previousFocusRef.current = document.activeElement as HTMLElement | null;
+    closeButtonRef.current?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         onClose();
+        return;
+      }
+
+      if (event.key === 'Tab') {
+        event.preventDefault();
+        closeButtonRef.current?.focus();
       }
     };
 
@@ -23,6 +35,7 @@ export function LightboxModal({ image, onClose }: LightboxModalProps) {
     return () => {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
+      previousFocusRef.current?.focus();
     };
   }, [image, onClose]);
 
@@ -50,6 +63,7 @@ export function LightboxModal({ image, onClose }: LightboxModalProps) {
             <p className="text-sm sm:text-base font-medium truncate">{image.caption}</p>
           </div>
           <button
+            ref={closeButtonRef}
             type="button"
             onClick={onClose}
             aria-label="Close image preview"

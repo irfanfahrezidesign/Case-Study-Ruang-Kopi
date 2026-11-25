@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
-import { motion, useScroll, useSpring } from 'motion/react';
+import { motion, useReducedMotion, useScroll, useSpring } from 'motion/react';
 import { NAV_ITEMS, PROJECT_LINKS } from '../data/caseStudyData';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('overview');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const prefersReduced = useReducedMotion();
 
   const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
+  const springProgress = useSpring(scrollYProgress, {
     stiffness: 180,
     damping: 30,
     restDelta: 0.001,
   });
+  const scaleX = prefersReduced ? scrollYProgress : springProgress;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +57,7 @@ export function Navbar() {
     setMobileMenuOpen(false);
     const target = document.getElementById(id);
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+      target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' });
     }
   };
 
@@ -74,7 +76,7 @@ export function Navbar() {
         className="h-[2px] w-full bg-[#B99A5D] origin-left"
       />
 
-      <div className="max-w-[1280px] mx-auto px-5 sm:px-8 h-16 flex items-center justify-between gap-8">
+      <div className="max-w-[1280px] mx-auto px-5 sm:px-8 h-16 flex items-center justify-between gap-3 sm:gap-8">
         {/* Zone 1: Single-line Brand Title */}
         <a
           href="#top"
